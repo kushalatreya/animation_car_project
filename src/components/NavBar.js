@@ -18,7 +18,7 @@ export default function NavBar() {
       </ul>
       <Link to='/cart' className='ml-auto'>
         <button>
-          <i className="fas fa-cart-plus">my cart</i>
+          <i className="fas fa-cart-plus">Reservation</i>
         </button>
       </Link>
     </nav>
