@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Switch, Route} from 'react-router-dom';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard';
 import Details from './components/Details';
 import Reservation from './components/Reservation/Reservation';
 import Default from './components/Default';
