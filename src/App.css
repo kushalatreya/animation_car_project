@@ -1,0 +1,28 @@
+/* Assaigning the variable */
+
+:root{
+  --mainWhite: #f9fbfc;
+  --mainBlue: #203961;
+  --lightBlue: #a2cdb8;
+  --mainRed: #e1755e;
+  --mainDark: #5d554b;
+}
+/* since there is bootstraps in App.js, we have set font as important so, this css will get presedence */
+body{
+ font-family: 'Oswald', sans-serif !important;
+ background: var(--mainWhite) !important;
+ color:var(--mainDark) !important;
+}
+.text-title{
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.text-blue{
+  color:var(--mainBlue);
+}
+
+.text-bright{
+  color: var(--lightBlue)
+}
