@@ -4,10 +4,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import logo from '../logo.svg';
+import { ButtonWrapper, NavWrapper} from '../components/StyledComponent.js'
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark px-sm-5">
+    <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-4">
       <Link to="/">
         <img src={logo} alt="store" className='navbar navbar-brand'  />
       </Link>
@@ -17,11 +18,11 @@ export default function NavBar() {
         </li>
       </ul>
       <Link to='/cart' className='ml-auto'>
-        <button>
+        <ButtonWrapper>
           <i className="fas fa-cart-plus">Reservation</i>
-        </button>
+        </ButtonWrapper>
       </Link>
-    </nav>
+    </NavWrapper>
       
   )
 }
