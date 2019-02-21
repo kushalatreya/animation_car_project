@@ -12,7 +12,7 @@ export default function NavBar() {
       </Link>
       <ul>
         <li>
-        
+        {/* test */}
         </li>
       </ul>
 
