@@ -2,7 +2,7 @@ export const CAR_LIST = [
          {
            id: 1,
            title: "ASTON MARTIN VANTAGE V8 ROADSTER COUPE 2009",
-           img: "img/product-1.png",
+           img: "image/car-1.jpeg",
            price: 100,
            company: "ASTON MARTIN",
            info:
@@ -14,7 +14,7 @@ export const CAR_LIST = [
          {
            id: 2,
            title: "AUDI A1 ",
-           img: "img/product-2.png",
+           img: "image/car-2.jpeg",
            price: 1600,
            company: "AUDI",
            info:
@@ -26,7 +26,7 @@ export const CAR_LIST = [
          {
            id: 3,
            title: "AUDI A3",
-           img: "img/product-3.png",
+           img: "image/car-3.jpeg",
            price: 80,
            company: "AUDI",
            info:
@@ -38,7 +38,7 @@ export const CAR_LIST = [
          {
            id: 4,
            title: "Tesla Model S 85 Electric Sedan 2014",
-           img: "img/product-4.png",
+           img: "image/car-4.jpeg",
            price: 168,
            company: "TESLA",
            info:
@@ -51,7 +51,7 @@ export const CAR_LIST = [
            id: 5,
            title:
              "TOYOTA AURIS TOURING SPORTS PREMIUM HYBRID WAGON 2014",
-           img: "img/product-5.png",
+           img: "image/car-5.jpeg",
            price: 114,
            company: "TOYOTA",
            info:
@@ -63,7 +63,7 @@ export const CAR_LIST = [
          {
            id: 6,
              title: "TOYOTA COROLLA S SEDAN 2014",
-           img: "img/product-6.png",
+           img: "image/car-6.jpeg",
            price: 170,
              company: "TOYOTA ",
            info:
@@ -75,7 +75,7 @@ export const CAR_LIST = [
          {
            id: 7,
              title: "VOLKSWAGEN BEETLE CONVERTIBLE 2015",
-           img: "img/product-7.png",
+           img: "image/car-7.jpeg",
            price: 130,
              company: "VOLKSWAGEN",
            info:
@@ -87,7 +87,7 @@ export const CAR_LIST = [
          {
            id: 8,
              title: "VOLKSWAGEN CALIFORNIA COMFORTLINE MINIVAN 2014",
-           img: "img/product-8.png",
+           img: "image/car-8.jpeg",
            price: 125,
              company: "VOLKSWAGEN",
            info:
@@ -99,7 +99,7 @@ export const CAR_LIST = [
     {
         id: 9,
         title: "VOLKSWAGEN CALIFORNIA COMFORTLINE MINIVAN 2014",
-        img: "img/product-8.png",
+        img: "image/car-9.jpeg",
         price: 125,
         company: "VOLKSWAGEN",
         info:
@@ -111,7 +111,7 @@ export const CAR_LIST = [
     {
         id: 10,
         title: "BMW 1-SERIES 118D HATCHBACK 2014",
-        img: "img/product-8.png",
+        img: "image/car-10.jpeg",
         price: 125,
         company: "BMW",
         info:
@@ -125,7 +125,7 @@ export const CAR_LIST = [
 export const detailProduct = {
     id: 1,
     title: "Google Pixel - Black",
-    img: "img/product-1.png",
+    img: "image/car-1.jpeg",
     price: 10,
     company: "google",
     info:
