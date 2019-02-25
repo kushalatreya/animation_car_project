@@ -1,6 +1,6 @@
 /* this is one bootstrap card to be mapped in dashboard */
 import React, { Component } from "react";
-import { ProductWrapper, SpanWrapper } from "./StyledComponent";
+import { ProductWrapper, SpanWrapper, LocationWrapper } from "./StyledComponent";
 import { Link } from "react-router-dom";
 
 export default class SingleCard extends Component {
@@ -17,8 +17,8 @@ export default class SingleCard extends Component {
                             <span className="card-notify-year ">{year}</span>
                         </SpanWrapper>)
                         }
-                       
-                            <span className="card-notify-location">{location}</span>
+                        {sale ? (<LocationWrapper sale >{location}</LocationWrapper>) : (<LocationWrapper  >{location}</LocationWrapper>)}
+                        
                         <Link to="/details">
                             <img src={img} alt={title} className="card-img-top" />
                             <button className="cart-btn">
