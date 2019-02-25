@@ -59,19 +59,7 @@ export const ProductWrapper = styled.div`
   .card-img-top {
     transition: all 1s linear;
   }
-  .card-notify-location {
-        position: absolute;
-        left: 1px;
-        bottom: 1px;
-        background: var(--mainWhite);
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: #000;
-        padding: 5px 10px;
-        font-size: 14px;
-        z-index:1;
-
-    }
+  
   /* .card-sale{
     position: absolute;
     left: 1px;
@@ -112,6 +100,23 @@ export const ProductWrapper = styled.div`
     cursor: pointer;
   }
   
+`;
+
+export const LocationWrapper = styled(ProductWrapper)`
+  
+        position: absolute;
+        left: 1px;
+        bottom: 1px;
+        background: ${props =>
+  props.sale ? 'var(--warning)' : 'var(--mainWhite)'};
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;
+        z-index:1;
+
+    
 `;
 /* ===================================
 
@@ -161,14 +166,16 @@ export const HeadWrapper = styled.div`
 @media (min-width: 992px){
     .search-sec{
         position: relative;
-        background: rgba(26, 70, 104, 0.51);
-        top: -114px;
+        background: var(--mainBlue);
+
       }
     }
     
     @media (max-width: 992px){
       .search-sec{
-        background: #1A4668;
+        background: var(--mainBlue);
+             
+
     }
 }`;
 /* ===================================
@@ -181,7 +188,7 @@ export const SpanWrapper = styled.span`
     right: 1px;
     top: 1px;
     background: ${props =>
-    props.sale ? 'var(--mainRed)' : 'var(--mainBlue)'};
+    props.sale ? 'var(--danger)' : 'var(--mainBlue)'};
     border-radius: 50%;
     text-align: center;
     color: #fff;
