@@ -8,8 +8,8 @@ export default function Header() {
               <img className=" mh-40 img-fluid d-block mw-100 " src="https://www.gkluk.com/wp-content/uploads/2015/09/123.jpeg" alt="hero_image"/>
                   <div className="card-img-overlay text-white">
                   <h5 className="card-title">Autonvuokraus Oulu,</h5>
-                      <h2 className="card-text">Renting Luxiry Car, Never Been Easier.</h2>
-                  <p className="card-text">--Voted best service company 2018 <i class="fas fa-award"></i> </p>
+                  <h2 className="card-text">//Renting Luxiry Car, Never Been Easier//</h2>
+                  <p className="card-text">--Voted Best service company 2018 <i className="fas fa-award"></i> </p>
                   </div>
 </div>
           {/* d-block w-100 img-fluid */}
