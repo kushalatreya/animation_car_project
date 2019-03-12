@@ -4,12 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
+import {ContextProvider} from './context';
+
+//context api is wrapping everything, so as we can access the value of state
 
 
 ReactDOM.render(
+    <ContextProvider>
 <Router>
-    <App />
-</Router>, document.getElementById('root'));
+    <App/>
+</Router>
+    </ContextProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -9,13 +9,13 @@ export const ButtonWrapper = styled.button`
   background: transparent;
   border: 0.05rem solid var(--lightBlue);
   text-transform: capitalize;
-  color: var(--lightBlue);
+  color: var(--orange);
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   transition: all 0.5s ease-in-out;
   cursor: pointer;
   &:hover {
-    background: var(--lightBlue);
+    background: var(--mainWhite);
     color: var(--mainBlue);
   }
   &:focus {
@@ -49,7 +49,7 @@ export const ProductWrapper = styled.div`
       box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
     }
     .card-footer {
-      background: rgba(247, 247, 247);
+      background: rgba(245, 245, 245);
     }
   }
   .img-container {
@@ -59,7 +59,7 @@ export const ProductWrapper = styled.div`
   .card-img-top {
     transition: all 1s linear;
   }
-  
+
   /* .card-sale{
     position: absolute;
     left: 1px;
@@ -74,8 +74,7 @@ export const ProductWrapper = styled.div`
     padding: 15px 0 0 0;
     z-index: 1;
   } */
-  
-  
+
   .img-container:hover .card-img-top {
     transform: scale(1.2);
   }
@@ -83,40 +82,43 @@ export const ProductWrapper = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 0.2rem 0.4rem;
-    background: var(--lightBlue);
+    /* padding: 0.2rem 0.4rem; */
+    background: var(--info);
     border: none;
     color: var(--mainWhite);
-    font-size: 1.4rem;
-    border-radius: 0.5rem 0 0 0;
-    transform: translate(100%, 100%);
+    font-size: 1.2rem;
+    border-radius: 0.5rem 0 0;
+    transform: translate(
+      100%,
+      100%
+    ); /* this will put the element away from the cart */
+    /*   display: none;*/
     transition: all 1s ease-in-out;
   }
   .img-container:hover .cart-btn {
-    transform: translate(0, 0);
+    transform: translate(
+      0,
+      0
+    ); /* when hover, now the element is shown in their original position */
+    /*   display: block;*/
   }
   .cart-btn:hover {
     color: var(--mainBlue);
     cursor: pointer;
   }
-  
 `;
 
 export const LocationWrapper = styled(ProductWrapper)`
-  
-        position: absolute;
-        left: 1px;
-        bottom: 1px;
-        background: ${props =>
-  props.sale ? 'var(--warning)' : 'var(--mainWhite)'};
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: #000;
-        padding: 5px 10px;
-        font-size: 14px;
-        z-index:1;
-
-    
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  background: ${props => (props.sale ? "var(--warning)" : "var(--mainWhite)")};
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: #000;
+  padding: 5px 10px;
+  font-size: 14px;
+  z-index: 1;
 `;
 /* ===================================
 
@@ -140,10 +142,10 @@ export const HeadWrapper = styled.div`
 
   } */
   /*search box css start here*/
-.search-sec{
+  .search-sec {
     padding: 2rem;
-}
-.search-slt{
+  }
+  .search-slt {
     display: block;
     width: 100%;
     font-size: 0.875rem;
@@ -153,42 +155,38 @@ export const HeadWrapper = styled.div`
     background-image: none;
     border: 1px solid #ccc;
     height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-.wrn-btn{
+    border-radius: 0;
+  }
+  .wrn-btn {
     width: 100%;
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
     height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-@media (min-width: 992px){
-    .search-sec{
-        position: relative;
-        background: var(--mainBlue);
-
-      }
+    border-radius: 0;
+  }
+  @media (min-width: 992px) {
+    .search-sec {
+      position: relative;
+      background: var(--mainBlue);
     }
-    
-    @media (max-width: 992px){
-      .search-sec{
-        background: var(--mainBlue);
-             
+  }
 
+  @media (max-width: 992px) {
+    .search-sec {
+      background: var(--mainBlue);
     }
-}`;
+  }
+`;
 /* ===================================
 
 ======================================*/
 export const SpanWrapper = styled.span`
-
   .card-notify-year {
     position: absolute;
     right: 1px;
     top: 1px;
-    background: ${props =>
-    props.sale ? 'var(--danger)' : 'var(--mainBlue)'};
+    background: ${props => (props.sale ? "var(--danger)" : "var(--mainBlue)")};
     border-radius: 50%;
     text-align: center;
     color: #fff;
@@ -200,7 +198,7 @@ export const SpanWrapper = styled.span`
   }
 `;
 
-export const SearchBarWrapper = styled.div`
+/* export const SearchBarWrapper = styled.div`
  .searchbar{
     margin-bottom: auto;
     margin-top: auto;
@@ -244,4 +242,4 @@ export const SearchBarWrapper = styled.div`
     color:white;
     }
 
-`;
+`; */
