@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ContextConsumer } from "../context"; 
+import { ContextConsumer } from "../context";
 import { Link } from "react-router-dom";
 import { ButtonWrapper } from "./StyledComponent";
 
@@ -16,9 +16,7 @@ export default class Details extends Component {
             price,
             info,
             inCart,
-            year,
-            location,
-            sale
+            year
           } = contextValue.detailProduct;
           return (
             <div className="container py-3 ">
@@ -51,12 +49,12 @@ export default class Details extends Component {
                         <i className="fas fa-angle-left" /> Home
                       </ButtonWrapper>
                     </Link>
-                    
+
                     {inCart ? (
                       <ButtonWrapper reserved>
                         Reserved <i className="fas fa-check" />
                       </ButtonWrapper>
-                    ): (
+                    ) : (
                       <ButtonWrapper
                         onClick={() => {
                           contextValue.addToCart(id);
@@ -64,7 +62,7 @@ export default class Details extends Component {
                       >
                         Reserve now <i className="fas fa-plus" />
                       </ButtonWrapper>
-                    )  }
+                    )}
                   </div>
                 </div>
               </div>
