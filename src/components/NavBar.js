@@ -37,7 +37,7 @@ export default function NavBar() {
           Search
         </button> */}
       </form>
-      <Link to="/cart" className="ml-auto">
+      <Link to="/reservation" className="ml-auto">
         <ButtonWrapper>
           <i className="fas fa-cart-plus">cart</i>
         </ButtonWrapper>
