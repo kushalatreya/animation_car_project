@@ -31,7 +31,7 @@ export default class Dashboard extends Component {
               {/* now we are using context api */}
               <ContextConsumer>
                 {contextValue => {
-                  return contextValue.data.map(car => {
+                  return contextValue.newSearchData.map(car => {
                     return <SingleCard key={car.id} carInfo={car} />;
                   });
                 }}
