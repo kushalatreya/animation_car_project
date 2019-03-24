@@ -9,14 +9,14 @@ class ContextProvider extends Component {
   state = {
     data: [],
     detailProduct: detailProduct,
-    cart: [],
-    cartSubTotal: 0,
-    cartTax: 0,
-    cartTotal: 0,
+    cart: [detailProduct],
+    carSubTotal: 0,
+    carTax: 0,
+    carTotal: 0,
     text: "",
     newSearchData: [],
     searchData: [],
-    city: ["Helisnki", "oulu"],
+    city: ["Helisnki", "Oulu"],
     sortOption: [
       "A-Z",
       "Z-A",
@@ -60,7 +60,7 @@ class ContextProvider extends Component {
         };
       },
       () => {
-        console.log(this.state);
+        this.addTotals();
       }
     );
   };
@@ -71,21 +71,49 @@ class ContextProvider extends Component {
     console.log("decrement");
   };
   removeItem = id => {
-    console.log("remove item");
+    let tempProducts = [...this.state.products];
+    let tempCart = [...this.state.cart];
+
+    tempCart = tempCart.filter(item => item.id !== id);
+    const index = tempProducts.indexOf(this.getItem(id));
+    let removedProduct = tempProducts[index];
+    removedProduct.inCart = false;
   };
   clearCart = () => {
-    console.log("cleared cart");
+    this.setState(
+      () => {
+        return { cart: [] };
+      },
+      () => {
+        window.location.reload();
+      }
+    );
+  };
+  addTotals = () => {
+    let subTotal = 0;
+    this.state.cart.map(item => (subTotal += item.total));
+    const tempTax = subTotal * 0.25;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
+    this.setState(() => {
+      return {
+        carSubTotal: subTotal,
+        carTax: tax,
+        carTotal: total
+      };
+    });
   };
   onChangeHandaler = event => {
     this.setState({ text: event.target.value });
   };
   onSelectChangeHanldaler = event => {
-    console.log("clicked");
     this.setState({ select: event.target.value });
   };
-  onSelectCityHandler;
+  onSelectCityHandler = event => {
+    this.setState({ selectCity: event.target.value });
+  };
 
-  sortCarByLocationAZ = cars => {
+  sortCarByAZ = cars => {
     const newSearchData = cars.sort((a, b) => {
       if (a.title < b.title) {
         return -1;
@@ -99,7 +127,7 @@ class ContextProvider extends Component {
       return { newSearchData: newSearchData };
     });
   };
-  sortCarByLocationZA = cars => {
+  sortCarByZA = cars => {
     const newSearchData = cars.sort((a, b) => {
       if (a.title > b.title) {
         return -1;
@@ -138,6 +166,23 @@ class ContextProvider extends Component {
       return { newSearchData: newSearchData };
     });
   };
+  sortByLocationHelsinki = cars => {
+    const newSearchData = cars.filter(
+      element => element.location === "Helsinki"
+    );
+    console.log("FIlter data", newSearchData);
+
+    this.setState(() => {
+      return { newSearchData: newSearchData };
+    });
+  };
+  sortByLocationOulu = cars => {
+    const newSearchData = cars.filter(element => element.location === "Oulu");
+    this.setState(() => {
+      return { newSearchData: newSearchData };
+    });
+  };
+
   SearchByKeyEnter = event => {
     let searchData = [...this.state.data];
     const newSearchData = searchData.filter(
@@ -147,17 +192,30 @@ class ContextProvider extends Component {
         element.company.toLowerCase().startsWith(this.state.text)
     );
     if (this.state.select === "A-Z") {
-      this.sortCarByLocationAZ(newSearchData);
-    } else if (this.state.select === "Z-A") {
-      this.sortCarByLocationZA(newSearchData);
-    } else if (this.state.select === "Latest Made") {
+      this.sortCarByAZ(newSearchData);
+    }
+    if (this.state.select === "Z-A") {
+      this.sortCarByZA(newSearchData);
+    }
+    if (this.state.select === "Latest Made") {
       this.sortByLatestMade(newSearchData);
-    } else if (this.state.select === "Oldest Made") {
+    }
+    if (this.state.select === "Oldest Made") {
       this.sortByOldMade(newSearchData);
-    } else if (this.state.select === "Cheapest First") {
+    }
+    if (this.state.select === "Cheapest First") {
       this.sortByCheapestFirst(newSearchData);
-    } else if (this.state.select === "Most Expensie First") {
+    }
+    if (this.state.select === "Most Expensie First") {
       this.sortByExpensiveFirst(newSearchData);
+    }
+    if (this.state.selectCity === "Helisnki") {
+      console.log(newSearchData);
+      this.sortByLocationHelsinki(newSearchData);
+      console.log(newSearchData);
+    }
+    if (this.state.selectCity === "Oulu") {
+      this.sortByLocationOulu(newSearchData);
     }
     this.setState(() => {
       return { newSearchData: newSearchData };
@@ -177,7 +235,8 @@ class ContextProvider extends Component {
           clearCart: this.clearCart,
           SearchByKeyEnter: this.SearchByKeyEnter,
           onChangeHandaler: this.onChangeHandaler,
-          onSelectChangeHanldaler: this.onSelectChangeHanldaler
+          onSelectChangeHanldaler: this.onSelectChangeHanldaler,
+          onSelectCityHandler: this.onSelectCityHandler
         }}
       >
         {this.props.children}
