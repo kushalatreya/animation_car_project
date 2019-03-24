@@ -7,18 +7,6 @@ export default class Header extends Component {
     return (
       <ContextConsumer>
         {contextValue => {
-          const {
-            id,
-            title,
-            img,
-            company,
-            price,
-            info,
-            inCart,
-            year,
-            location,
-            sale
-          } = contextValue.data;
           return (
             <React.Fragment>
               <div className="card bg-dark">
@@ -74,9 +62,12 @@ export default class Header extends Component {
                             <div className="col-lg-3 col-md-3 col-sm-12 p-0">
                               <select
                                 className="form-control search-slt"
-                                id="exampleFormControlSelect1"
+                                id="exampleFormControlSelect2"
+                                onChange={e =>
+                                  contextValue.onSelectCityHandler(e)
+                                }
                               >
-                                <option>Pick-up city</option>
+                                <option> Pick-up city </option>
                                 {contextValue.city.map(item => (
                                   <option value={item}>{item}</option>
                                 ))}
