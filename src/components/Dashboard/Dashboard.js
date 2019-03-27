@@ -1,7 +1,7 @@
 /* This is the ony, class based component */
 import React, { Component } from "react";
-import { CAR_LIST } from "../../data";
-import Title from "../../components/Title";
+/* import { CAR_LIST } from "../../data";
+ */ import Title from "../../components/Title";
 import { ProductWrapper } from "../../components/StyledComponent";
 import SingleCard from "../SingleCard";
 import Header from "./Header";
@@ -16,7 +16,6 @@ export default class Dashboard extends Component {
   } */
 
   render() {
-    console.log(CAR_LIST);
     return (
       <React.Fragment>
         <Header />
