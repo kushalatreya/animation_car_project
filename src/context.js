@@ -16,34 +16,34 @@ class ContextProvider extends Component {
     text: "",
     newSearchData: [],
     searchData: [],
-    city: ["Helisnki", "Oulu"],
+    city: ["Helsinki", "Oulu"],
     sortOption: [
       "A-Z",
       "Z-A",
       "Latest Made",
       "Oldest Made",
       "Cheapest First",
-      "Most Expensie First"
+      "Most Expensie First",
     ],
     select: "",
-    selectCity: ""
+    selectCity: "",
   };
 
   componentDidMount() {
     this.setState({ data: CAR_LIST, newSearchData: CAR_LIST });
   }
-  getItem = id => {
-    const product = this.state.data.find(element => element.id === id);
+  getItem = (id) => {
+    const product = this.state.data.find((element) => element.id === id);
     return product;
   };
 
-  handleDetail = id => {
+  handleDetail = (id) => {
     const product = this.getItem(id);
     this.setState(() => {
       return { detailProduct: product };
     });
   };
-  addToCart = id => {
+  addToCart = (id) => {
     let tempProducts = [...this.state.data];
     const index = tempProducts.indexOf(this.getItem(id));
     const product = tempProducts[index];
@@ -56,7 +56,7 @@ class ContextProvider extends Component {
       () => {
         return {
           products: tempProducts,
-          cart: [...this.state.cart, product]
+          cart: [...this.state.cart, product],
         };
       },
       () => {
@@ -64,17 +64,17 @@ class ContextProvider extends Component {
       }
     );
   };
-  increment = id => {
+  increment = (id) => {
     console.log("increment");
   };
-  decrement = id => {
+  decrement = (id) => {
     console.log("decrement");
   };
-  removeItem = id => {
+  removeItem = (id) => {
     let tempProducts = [...this.state.products];
     let tempCart = [...this.state.cart];
 
-    tempCart = tempCart.filter(item => item.id !== id);
+    tempCart = tempCart.filter((item) => item.id !== id);
     const index = tempProducts.indexOf(this.getItem(id));
     let removedProduct = tempProducts[index];
     removedProduct.inCart = false;
@@ -91,7 +91,7 @@ class ContextProvider extends Component {
   };
   addTotals = () => {
     let subTotal = 0;
-    this.state.cart.map(item => (subTotal += item.total));
+    this.state.cart.map((item) => (subTotal += item.total));
     const tempTax = subTotal * 0.25;
     const tax = parseFloat(tempTax.toFixed(2));
     const total = subTotal + tax;
@@ -99,21 +99,21 @@ class ContextProvider extends Component {
       return {
         carSubTotal: subTotal,
         carTax: tax,
-        carTotal: total
+        carTotal: total,
       };
     });
   };
-  onChangeHandaler = event => {
+  onChangeHandaler = (event) => {
     this.setState({ text: event.target.value });
   };
-  onSelectChangeHanldaler = event => {
+  onSelectChangeHanldaler = (event) => {
     this.setState({ select: event.target.value });
   };
-  onSelectCityHandler = event => {
+  onSelectCityHandler = (event) => {
     this.setState({ selectCity: event.target.value });
   };
 
-  sortCarByAZ = cars => {
+  sortCarByAZ = (cars) => {
     const newSearchData = cars.sort((a, b) => {
       if (a.title < b.title) {
         return -1;
@@ -127,7 +127,7 @@ class ContextProvider extends Component {
       return { newSearchData: newSearchData };
     });
   };
-  sortCarByZA = cars => {
+  sortCarByZA = (cars) => {
     const newSearchData = cars.sort((a, b) => {
       if (a.title > b.title) {
         return -1;
@@ -142,51 +142,49 @@ class ContextProvider extends Component {
     });
   };
 
-  sortByLatestMade = cars => {
+  sortByLatestMade = (cars) => {
     const newSearchData = cars.sort((a, b) => b.year - a.year);
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
-  sortByOldMade = cars => {
+  sortByOldMade = (cars) => {
     const newSearchData = cars.sort((a, b) => a.year - b.year);
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
-  sortByCheapestFirst = cars => {
+  sortByCheapestFirst = (cars) => {
     const newSearchData = cars.sort((a, b) => a.price - b.price);
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
-  sortByExpensiveFirst = cars => {
+  sortByExpensiveFirst = (cars) => {
     const newSearchData = cars.sort((a, b) => b.price - a.price);
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
-  sortByLocationHelsinki = cars => {
+  sortByLocationHelsinki = (cars) => {
     const newSearchData = cars.filter(
-      element => element.location === "Helsinki"
+      (element) => element.location === "Helsinki"
     );
-    console.log("FIlter data", newSearchData);
-
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
-  sortByLocationOulu = cars => {
-    const newSearchData = cars.filter(element => element.location === "Oulu");
+  sortByLocationOulu = (cars) => {
+    const newSearchData = cars.filter((element) => element.location === "Oulu");
     this.setState(() => {
       return { newSearchData: newSearchData };
     });
   };
 
-  SearchByKeyEnter = event => {
+  SearchByKeyEnter = (event) => {
     let searchData = [...this.state.data];
     const newSearchData = searchData.filter(
-      element =>
+      (element) =>
         element.title.toLowerCase().startsWith(this.state.text) ||
         element.location.toLowerCase().startsWith(this.state.text) ||
         element.company.toLowerCase().startsWith(this.state.text)
@@ -210,9 +208,7 @@ class ContextProvider extends Component {
       this.sortByExpensiveFirst(newSearchData);
     }
     if (this.state.selectCity === "Helisnki") {
-      console.log(newSearchData);
       this.sortByLocationHelsinki(newSearchData);
-      console.log(newSearchData);
     }
     if (this.state.selectCity === "Oulu") {
       this.sortByLocationOulu(newSearchData);
@@ -236,7 +232,7 @@ class ContextProvider extends Component {
           SearchByKeyEnter: this.SearchByKeyEnter,
           onChangeHandaler: this.onChangeHandaler,
           onSelectChangeHanldaler: this.onSelectChangeHanldaler,
-          onSelectCityHandler: this.onSelectCityHandler
+          onSelectCityHandler: this.onSelectCityHandler,
         }}
       >
         {this.props.children}

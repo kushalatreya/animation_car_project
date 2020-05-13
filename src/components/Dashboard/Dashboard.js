@@ -1,7 +1,7 @@
 /* This is the ony, class based component */
 import React, { Component } from "react";
-/* import { CAR_LIST } from "../../data";
- */ import Title from "../../components/Title";
+//import { CAR_LIST } from "../../data";
+import Title from "../../components/Title";
 import { ProductWrapper } from "../../components/StyledComponent";
 import SingleCard from "../SingleCard";
 import Header from "./Header";
@@ -29,10 +29,18 @@ export default class Dashboard extends Component {
 
               {/* now we are using context api */}
               <ContextConsumer>
-                {contextValue => {
-                  return contextValue.newSearchData.map(car => {
-                    return <SingleCard key={car.id} carInfo={car} />;
-                  });
+                {(contextValue) => {
+                  return contextValue.newSearchData
+                    .filter((car) => {
+                      if (contextValue.selectCity.length !== 0) {
+                        return car.location === contextValue.selectCity;
+                      } else {
+                        return true;
+                      }
+                    })
+                    .map((car) => {
+                      return <SingleCard key={car.id} carInfo={car} />;
+                    });
                 }}
               </ContextConsumer>
             </div>
